@@ -46,6 +46,17 @@ function startGame () {
     console.log(blanksAndGuesses)
 }
 
+function checkLetters (letter) {
+    // Check if letter exists
+    var letterInword = false;
+
+    for (var i = 0; i < numberOfBlanks; i++) {
+        if (selectedWord[i] === letter) {
+            letterInword = true;
+            console.log("Letter found!" + letterInword);
+        }
+    }
+}
 // MAIN PROCESS
 //===================================================================
 
@@ -56,5 +67,6 @@ startGame();
 
 document.onkeyup = function (event) {
     letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+    checkLetters(letterGuessed)
     console.log(letterGuessed);
 }
