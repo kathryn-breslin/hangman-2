@@ -17,7 +17,7 @@ var guessesLeft = 9;
 
 // FUNCTIONS
 //===================================================================
-function startGame () {
+function startGame() {
     selectedWord = moonOptions[Math.floor(Math.random() * moonOptions.length)];
     lettersInWord = selectedWord.split("");
     numberOfBlanks = lettersInWord.length;
@@ -46,7 +46,7 @@ function startGame () {
     console.log(blanksAndGuesses)
 }
 
-function checkLetters (letter) {
+function checkLetters(letter) {
     // Check if letter exists
     var letterInword = false;
 
@@ -56,6 +56,25 @@ function checkLetters (letter) {
             console.log("Letter found!" + letterInword);
         }
     }
+
+    // Check for letter in word. Remove blanks from word with letter
+
+    if (letterInword) {
+        for (var i = 0; i < numberOfBlanks; i++) {
+            if (selectedWord[i] === letter) {
+                blanksAndGuesses[i] = letter;
+            }
+        }
+    }
+    else {
+        wrongGuesses.push(letter);
+        guessesLeft--;
+    }
+    console.log(blanksAndGuesses);
+}
+
+function scoring () {
+    console.log("Win Count:" + winCount + " | Loss count: " + lossCount + " | Guesses Left: " + guessesLeft);
 }
 // MAIN PROCESS
 //===================================================================
@@ -68,5 +87,6 @@ startGame();
 document.onkeyup = function (event) {
     letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
     checkLetters(letterGuessed)
+    scoring();
     console.log(letterGuessed);
 }
