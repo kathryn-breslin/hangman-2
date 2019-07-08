@@ -26,7 +26,7 @@ function startGame() {
     guessesLeft = 9;
     wrongGuesses = [];
     blanksAndGuesses = [];
-
+    wrongGuesses = [];
     // Populate blanks and guesses with correct number of blanks
 
     for (var i = 0; i < numberOfBlanks; i++) {
